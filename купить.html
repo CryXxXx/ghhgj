@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Ваш магазин</title>
+</head>
+<body>
+<style>
+  .testimonial-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    padding: 64px 24px;
+  }
+
+  @media (max-width: 991px) {
+    .testimonial-container {
+      padding: 0 20px;
+    }
+  }
+
+  .testimonial-box {
+    display: flex;
+    flex-direction: column;
+    background-color: #f5f7fa;
+    width: 965px;
+    max-width: 100%;
+    padding: 64px 42px;
+  }
+
+  @media (max-width: 991px) {
+    .testimonial-box {
+      padding: 0 20px;
+    }
+  }
+
+  .testimonial-content {
+    display: flex;
+    flex-direction: column;
+    font-size: 24px;
+    color: #000;
+    text-align: center;
+  }
+
+  @media (max-width: 991px) {
+    .testimonial-content {
+      max-width: 100%;
+    }
+  }
+
+  .testimonial-intro {
+    font-family: Inter, sans-serif;
+    font-weight: 700;
+    line-height: 120%;
+  }
+
+  @media (max-width: 991px) {
+    .testimonial-intro {
+      max-width: 100%;
+    }
+  }
+
+  .testimonial-quote {
+    font-family: Inter, sans-serif;
+    font-weight: 400;
+    line-height: 36px;
+    margin-top: 16px;
+  }
+
+  @media (max-width: 991px) {
+    .testimonial-quote {
+      max-width: 100%;
+    }
+  }
+
+  .testimonial-author {
+    display: flex;
+    flex-direction: column;
+    margin: 24px 0 262px;
+  }
+
+  @media (max-width: 991px) {
+    .testimonial-author {
+      max-width: 100%;
+      margin-bottom: 40px;
+    }
+  }
+
+  .author-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    width: 60px;
+  }
+
+  .author-image {
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+    border-radius: 50%;
+  }
+
+  .author-details {
+    display: flex;
+    flex-direction: column;
+    margin-top: 16px;
+    color: #000;
+    text-align: center;
+    line-height: 150%;
+  }
+
+  @media (max-width: 991px) {
+    .author-details {
+      max-width: 100%;
+    }
+  }
+
+  .author-name {
+    font-family: Inter, sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+  }
+
+  @media (max-width: 991px) {
+    .author-name {
+      max-width: 100%;
+    }
+  }
+
+  .author-title {
+    margin-top: 4px;
+    font-family: Inter, sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+  }
+
+  @media (max-width: 991px) {
+    .author-title {
+      max-width: 100%;
+    }
+  }
+</style>
+
+<section class="testimonial-container">
+  <article class="testimonial-box">
+    <section class="testimonial-content">
+      <p class="testimonial-intro">Testimonial introduction copy goes here, lorem ipsum dolor sit amet.</p>
+      <blockquote class="testimonial-quote">
+        “Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse tincidunt sagittis eros. Quisque quis euismod lorem.”
+      </blockquote>
+    </section>
+    <section class="testimonial-author">
+      <div class="author-image-container">
+        <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/2d86f225ebf1ba32d67bfb048cdd049615f142a00f776509ea5b717c06ea880e?apiKey=decb6927c06a4668869582f6cdd61af7&" alt="Author Image" class="author-image" />
+      </div>
+      <div class="author-details">
+        <p class="author-name">Author Name</p>
+        <p class="author-title">Former VP of ads at Company</p>
+      </div>
+    </section>
+  </article>
+</section>
+</main>
+</body>
+</html>
