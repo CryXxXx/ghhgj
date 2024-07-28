@@ -2,7 +2,7 @@ window.onscroll = function() {
   window.scrollTo(0, 0);
 };
 
-const MovCircle = document.querySelector('.black-circle');
+const MovCircle = document.querySelector('.upgrade-rectangle');
 const upgradeText = document.getElementById('upgrade'); // Получаем элемент с надписью
 let hasMoved = false; 
 
@@ -48,84 +48,139 @@ MovCircle.addEventListener('click', () => {
 
 
 
-const originalProfitAmount = parseFloat(document.querySelector('.profit-amount').textContent);
-const ValCircle = document.querySelector('.val-circle');
+
+
+
+
+
+const bigNumElements = document.querySelectorAll('.big-num');
+
+bigNumElements.forEach((element) => {
+  const num = parseFloat(element.textContent);
+  const formattedNum = formatNumber(num);
+  element.textContent = formattedNum;
+});
+
+function formatNumber(num) {
+  if (Number.isInteger(num)) {
+    return num.toLocaleString('en-US', { useGrouping: true });
+  } else {
+    return num.toLocaleString('en-US', { useGrouping: true, minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  }
+}
+
+
+
+const ValCircle = document.querySelector('.convert');
 let isMovingRight = true;
+
+const originalTotDep = parseFloat(document.querySelector('#tot-dep').textContent);
+const originalWeekDep = parseFloat(document.querySelector('#week-dep').textContent);
+const originalProfitAmount = parseFloat(document.querySelector('.profit-amount').textContent);
+
+
+const TotDep = document.querySelector('#tot-dep');
+const WeekDep = document.querySelector('#week-dep');
+const ProfitAmount = document.querySelector('.profit-amount');
+
+ProfitAmount.textContent = formatNumber(parseFloat(ProfitAmount.textContent));
+TotDep.textContent = formatNumber(parseFloat(TotDep.textContent));
+WeekDep.textContent = formatNumber(parseFloat(WeekDep.textContent));
+
+ProfitAmount.classList.add('profit-amount-rub'); 
+let exchangeRate = 86
+
 
 ValCircle.addEventListener('click', () => {
 
   if (isMovingRight) { 
-    anime({
+    anime({ 
       targets: '.val-circle',
       translateX: '30px',
       duration: 500,
       easing: 'easeInOutExpo',
-      update: (anim) => {
-        const progress = anim.progress;
-        // Изменяем видимость только при движении вправо
-        if (progress > 50) {
+      update: (anim) => { 
+        const progress = anim.currentTime;
+
+        const ProfitAmountResult = formatNumber(originalProfitAmount / exchangeRate);
+        const TotDepResult = formatNumber(originalTotDep / exchangeRate);
+        const WeekDepResult = formatNumber(originalWeekDep / exchangeRate);
+
+        if (progress < 250)
+          {
+          ProfitAmount.style.opacity = 1 - (progress / 250);
+          TotDep.style.opacity = 1 - (progress / 250);
+          WeekDep.style.opacity = 1 - (progress / 250);
+        } 
+        else {
+          ProfitAmount.style.opacity = (progress - 250) / 250;
+          TotDep.style.opacity = (progress - 250) / 250;
+          WeekDep.style.opacity = (progress - 250) / 250;
+          ProfitAmount.textContent = ProfitAmountResult;
+          TotDep.textContent = TotDepResult;
+          WeekDep.textContent = WeekDepResult;
+          }
+
+        if (progress >= 250) 
+          {
           document.getElementById('rub').style.display = 'none';
           document.getElementById('dol').style.display = 'block';
-        } 
+          ProfitAmount.classList.remove('profit-amount-rub');
+          ProfitAmount.classList.add('profit-amount-usd');
+          } 
+
       },
       complete: () => {
-        // Убедиться, что правый икон останется виден
         document.getElementById('dol').style.display = 'block';
         document.getElementById('rub').style.display = 'none';
         isMovingRight = false;
-        const result = (originalProfitAmount / 85).toFixed(2);
-        const numberElement = document.querySelector('.profit-amount');
-        const number = parseFloat(result);
-        let formattedNumber;
-        if (Number.isInteger(number)) {
-          formattedNumber = number.toLocaleString('en-US', {
-            useGrouping: true
-          });
-        } else {
-          formattedNumber = number.toLocaleString('en-US', {
-            useGrouping: true,
-            minimumFractionDigits: 2,
-            maximumFractionDigits: 2
-          });
-        }
-        numberElement.textContent = formattedNumber;
       }
     });
-  } else { 
+
+  } else {
+
     anime({
       targets: '.val-circle',
-      translateX: '0', // Возвращаем в исходное положение
+      translateX: '0', 
       duration: 500,
       easing: 'easeInOutExpo',
       update: (anim) => {
-        const progress = anim.progress;
-        // Изменяем видимость только при движении влево
-        if (!isMovingRight && progress > 50) {
+        const progress = anim.currentTime;
+
+        const TotDepNumber = formatNumber(originalTotDep);
+        const WeekDepNumber = formatNumber(originalWeekDep);
+        const ProfitAmountNumber = formatNumber(originalProfitAmount);
+
+        if (!isMovingRight && progress < 250)
+          {
+          ProfitAmount.style.opacity = 1 - (progress / 250);
+          TotDep.style.opacity = 1 - (progress / 250);
+          WeekDep.style.opacity = 1 - (progress / 250);
+          } 
+        else
+          {
+          ProfitAmount.style.opacity = (progress - 250) / 250;
+          TotDep.style.opacity = (progress - 250) / 250;
+          WeekDep.style.opacity = (progress - 250) / 250;
+          TotDep.textContent = TotDepNumber;
+          WeekDep.textContent = WeekDepNumber;
+          ProfitAmount.textContent = ProfitAmountNumber;
+          }
+
+        if (!isMovingRight && progress >= 250) {
           document.getElementById('dol').style.display = 'none';
           document.getElementById('rub').style.display = 'block';
+          ProfitAmount.classList.remove('profit-amount-usd');
+          ProfitAmount.classList.add('profit-amount-rub');
         } 
       },
       complete: () => {
-        // Убедиться, что левый икон останется виден
         document.getElementById('rub').style.display = 'block';
         document.getElementById('dol').style.display = 'none';
         isMovingRight = true;
-        const numberElement = document.querySelector('.profit-amount');
-        const number = originalProfitAmount;
-        let formattedNumber;
-        if (Number.isInteger(number)) {
-          formattedNumber = number.toLocaleString('en-US', {
-            useGrouping: true
-          });
-        } else {
-          formattedNumber = number.toLocaleString('en-US', {
-            useGrouping: true,
-            minimumFractionDigits: 2,
-            maximumFractionDigits: 2
-          });
-        }
-        numberElement.textContent = formattedNumber;
       }
     });
+
   }
 });
+
