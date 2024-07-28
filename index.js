@@ -1,3 +1,7 @@
+window.onload = function() {
+  window.Telegram.WebApp.expand();
+};
+
 const MovCircle = document.querySelector('.black-circle');
 const upgradeText = document.getElementById('upgrade'); // Получаем элемент с надписью
 let hasMoved = false; 
