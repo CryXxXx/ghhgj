@@ -14,7 +14,6 @@ body {
     background-color: #fff;
 }
 
-
 .hello {
     font-family: 'Rubik', sans-serif;
     font-size: 16px;
@@ -51,8 +50,8 @@ body {
 }
 
 .inner-circle {
-    width: 32px; /* Диаметр внутреннего круга */
-    height: 32px; /* Диаметр внутреннего круга */
+    width: 33px; /* Диаметр внутреннего круга */
+    height: 33px; /* Диаметр внутреннего круга */
     border-radius: 50%; /* Скругление углов до круга */
     overflow: hidden; /* Обрезка содержимого до формы круга */
     display: flex;
@@ -137,14 +136,23 @@ body {
     z-index: 1;
 }
 
-.profit-amount::before {
-    content: '₽ '; /* Значок рубля и пробел перед надписью */
-    color: #a1a1a1; /* Серый цвет значка рубля */
+.profit-amount-rub::before {
+    content: '₽ ';
+    color: #a1a1a1;
     font-family: 'Varela Round', sans-serif;
     font-size: 32px;
-    font-weight: 100; /* Вес шрифта 300 */
-}
+    font-weight: 100;
+  }
+  
+  .profit-amount-usd::before {
+    content: '$ ';
+    color: #a1a1a1;
+    font-family: 'Varela Round', sans-serif;
+    font-size: 32px;
+    font-weight: 100;
+  }
 
+  
 .percent {
     font-family: 'Sora', sans-serif;
     font-size: 13px;
