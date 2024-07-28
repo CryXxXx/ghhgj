@@ -1,43 +1,4 @@
 
-if (window.Telegram.WebApp.initDataUnsafe) {
-
-  const userName = window.Telegram.WebApp.initDataUnsafe.user.first_name;
-  document.querySelector('.nickname').textContent = userName; 
-  
-  
-  const userAvatar = window.Telegram.WebApp.initDataUnsafe.user.photo_url;
-  document.querySelector('.circle-image').src = userAvatar; 
-  
-  
-  const tgId = window.Telegram.WebApp.initDataUnsafe.user.id;
-  
-
-  fetch('https://f09f-89-22-177-227.ngrok-free.app/receive_tg_id', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ id: tgId })
-  })
-
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Сетевая ошибка при обращении к серверу');
-    }
-    return response.json();
-  })
-  .then(userData => {
-
-    document.querySelector('#tot-dep').textContent = userData.deposit;
-    document.querySelector('.profit-amount').textContent = userData.windeposit;
-    document.querySelector('#tot-trades').textContent = userData.trades;
-    //document.querySelector('amountdepweek').textContent = userData.deposit//доделать потом
-    //document.querySelector('amountweek').textContent = userData.trades;//доделать потом
-  })
-  .catch((error) => {
-    console.error('Ошибка:', error);
-  });
-}
 
 const MovCircle = document.querySelector('.upgrade-rectangle');
 const upgradeText = document.getElementById('upgrade'); // Получаем элемент с надписью
@@ -99,7 +60,7 @@ bigNumElements.forEach((element) => {
 });
 
 function formatNumber(num) {
-  if (Number.isInteger(num)) {
+  if (num % 1 === 0) {
     return num.toLocaleString('en-US', { useGrouping: true });
   } else {
     return num.toLocaleString('en-US', { useGrouping: true, minimumFractionDigits: 2, maximumFractionDigits: 2 });
@@ -129,14 +90,13 @@ let exchangeRate = 86
 
 
 ValCircle.addEventListener('click', () => {
-
-  if (isMovingRight) { 
-    anime({ 
+  if (isMovingRight) {
+    anime({
       targets: '.val-circle',
       translateX: '30px',
       duration: 500,
       easing: 'easeInOutExpo',
-      update: (anim) => { 
+      update: (anim) => {
         const progress = anim.currentTime;
 
         let ProfitAmountResult = formatNumber(originalProfitAmount / exchangeRate);
@@ -173,12 +133,10 @@ ValCircle.addEventListener('click', () => {
         isMovingRight = false;
       }
     });
-
   } else {
-
     anime({
       targets: '.val-circle',
-      translateX: '0', 
+      translateX: '0',
       duration: 500,
       easing: 'easeInOutExpo',
       update: (anim) => {
@@ -220,3 +178,43 @@ ValCircle.addEventListener('click', () => {
 
   }
 });
+
+if (window.Telegram.WebApp.initDataUnsafe) {
+
+  const userName = window.Telegram.WebApp.initDataUnsafe.user.first_name;
+  document.querySelector('.nickname').textContent = userName; 
+  
+  
+  const userAvatar = window.Telegram.WebApp.initDataUnsafe.user.photo_url;
+  document.querySelector('.circle-image').src = userAvatar; 
+  
+  
+  const tgId = window.Telegram.WebApp.initDataUnsafe.user.id;
+  
+
+  fetch('https://f09f-89-22-177-227.ngrok-free.app/receive_tg_id', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ id: tgId })
+  })
+
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Сетевая ошибка при обращении к серверу');
+    }
+    return response.json();
+  })
+  .then(userData => {
+
+    document.querySelector('#tot-dep').textContent = userData.deposit;
+    document.querySelector('.profit-amount').textContent = userData.windeposit;
+    document.querySelector('#tot-trades').textContent = userData.trades;
+    document.querySelector('#week-dep').textContent = userData.deposit//доделать потом
+    document.querySelector('#week-trade').textContent = userData.trades;//доделать потом
+  })
+  .catch((error) => {
+    console.error('Ошибка:', error);
+  });
+}
