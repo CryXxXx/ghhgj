@@ -1,8 +1,8 @@
  const userName = window.Telegram.WebApp.initDataUnsafe.user.first_name;
-  document.querySelector('.nickname').textContent = userName; 
+ // document.querySelector('.nickname').textContent = userName; 
   
   const userAvatar = window.Telegram.WebApp.initDataUnsafe.user.photo_url;
-  document.querySelector('.circle-image').src = userAvatar; 
+ // document.querySelector('.circle-image').src = userAvatar; 
   
   const tgId = window.Telegram.WebApp.initDataUnsafe.user.id;
   
