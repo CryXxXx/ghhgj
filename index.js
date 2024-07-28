@@ -1,6 +1,3 @@
-window.onscroll = function() {
-  window.scrollTo(0, 0);
-};
 
 if (window.Telegram.WebApp.initDataUnsafe) {
 
