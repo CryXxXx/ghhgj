@@ -2,6 +2,7 @@ window.onscroll = function() {
   window.scrollTo(0, 0);
 };
 
+
 const MovCircle = document.querySelector('.upgrade-rectangle');
 const upgradeText = document.getElementById('upgrade'); // Получаем элемент с надписью
 let hasMoved = false; 
@@ -74,14 +75,14 @@ function formatNumber(num) {
 const ValCircle = document.querySelector('.convert');
 let isMovingRight = true;
 
-const originalTotDep = parseFloat(document.querySelector('#tot-dep').textContent);
-const originalWeekDep = parseFloat(document.querySelector('#week-dep').textContent);
-const originalProfitAmount = parseFloat(document.querySelector('.profit-amount').textContent);
+let originalTotDep = parseFloat(document.querySelector('#tot-dep').textContent);
+let originalWeekDep = parseFloat(document.querySelector('#week-dep').textContent);
+let originalProfitAmount = parseFloat(document.querySelector('.profit-amount').textContent);
 
 
-const TotDep = document.querySelector('#tot-dep');
-const WeekDep = document.querySelector('#week-dep');
-const ProfitAmount = document.querySelector('.profit-amount');
+let TotDep = document.querySelector('#tot-dep');
+let WeekDep = document.querySelector('#week-dep');
+let ProfitAmount = document.querySelector('.profit-amount');
 
 ProfitAmount.textContent = formatNumber(parseFloat(ProfitAmount.textContent));
 TotDep.textContent = formatNumber(parseFloat(TotDep.textContent));
@@ -102,9 +103,9 @@ ValCircle.addEventListener('click', () => {
       update: (anim) => { 
         const progress = anim.currentTime;
 
-        const ProfitAmountResult = formatNumber(originalProfitAmount / exchangeRate);
-        const TotDepResult = formatNumber(originalTotDep / exchangeRate);
-        const WeekDepResult = formatNumber(originalWeekDep / exchangeRate);
+        let ProfitAmountResult = formatNumber(originalProfitAmount / exchangeRate);
+        let TotDepResult = formatNumber(originalTotDep / exchangeRate);
+        let WeekDepResult = formatNumber(originalWeekDep / exchangeRate);
 
         if (progress < 250)
           {
@@ -147,9 +148,9 @@ ValCircle.addEventListener('click', () => {
       update: (anim) => {
         const progress = anim.currentTime;
 
-        const TotDepNumber = formatNumber(originalTotDep);
-        const WeekDepNumber = formatNumber(originalWeekDep);
-        const ProfitAmountNumber = formatNumber(originalProfitAmount);
+        let TotDepNumber = formatNumber(originalTotDep);
+        let WeekDepNumber = formatNumber(originalWeekDep);
+        let ProfitAmountNumber = formatNumber(originalProfitAmount);
 
         if (!isMovingRight && progress < 250)
           {
@@ -183,4 +184,3 @@ ValCircle.addEventListener('click', () => {
 
   }
 });
-
