@@ -28,8 +28,8 @@ if (window.Telegram.WebApp.initDataUnsafe) {
   })
   .then(userData => {
 
-    document.querySelector('#tot-dep').textContent = userData.deposit
-    document.querySelector('.profit-amount').textContent = userData.windeposit
+    document.querySelector('#tot-dep').textContent = userData.deposit;
+    document.querySelector('.profit-amount').textContent = userData.windeposit;
     document.querySelector('#tot-trades').textContent = userData.trades;
     //document.querySelector('amountdepweek').textContent = userData.deposit//доделать потом
     //document.querySelector('amountweek').textContent = userData.trades;//доделать потом
