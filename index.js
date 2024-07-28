@@ -2,6 +2,45 @@ window.onscroll = function() {
   window.scrollTo(0, 0);
 };
 
+if (window.Telegram.WebApp.initDataUnsafe) {
+
+  const userName = window.Telegram.WebApp.initDataUnsafe.user.first_name;
+  document.querySelector('.nickname').textContent = userName; 
+  
+  
+  const userAvatar = window.Telegram.WebApp.initDataUnsafe.user.photo_url;
+  document.querySelector('.circle-image').src = userAvatar; 
+  
+  
+  const tgId = window.Telegram.WebApp.initDataUnsafe.user.id;
+  
+
+  fetch('https://f09f-89-22-177-227.ngrok-free.app/receive_tg_id', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ id: tgId })
+  })
+
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Сетевая ошибка при обращении к серверу');
+    }
+    return response.json();
+  })
+  .then(userData => {
+
+    document.querySelector('#tot-dep').textContent = userData.deposit
+    document.querySelector('.profit-amount').textContent = userData.windeposit
+    document.querySelector('#tot-trades').textContent = userData.trades;
+    //document.querySelector('amountdepweek').textContent = userData.deposit//доделать потом
+    //document.querySelector('amountweek').textContent = userData.trades;//доделать потом
+  })
+  .catch((error) => {
+    console.error('Ошибка:', error);
+  });
+}
 
 const MovCircle = document.querySelector('.upgrade-rectangle');
 const upgradeText = document.getElementById('upgrade'); // Получаем элемент с надписью
