@@ -1,5 +1,5 @@
-window.onload = function() {
-  window.Telegram.WebApp.expand();
+window.onscroll = function() {
+  window.scrollTo(0, 0);
 };
 
 const MovCircle = document.querySelector('.black-circle');
