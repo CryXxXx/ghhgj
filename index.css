@@ -10,6 +10,11 @@
     box-sizing: border-box;
 }
 
+body {
+    background-color: #fff;
+}
+
+
 .hello {
     font-family: 'Rubik', sans-serif;
     font-size: 16px;
