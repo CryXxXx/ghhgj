@@ -7,6 +7,10 @@
   box-sizing: border-box;
 }
 
+body {
+    background-color: #fff;
+}
+
 
 .rectangle {
   position: relative;
