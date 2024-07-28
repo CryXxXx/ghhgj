@@ -1,10 +1,10 @@
-  const userName = window.Telegram.WebApp.initDataUnsafe.user.first_name;
+ /* const userName = window.Telegram.WebApp.initDataUnsafe.user.first_name;
   document.querySelector('.nickname').textContent = userName; 
   
   const userAvatar = window.Telegram.WebApp.initDataUnsafe.user.photo_url;
   document.querySelector('.circle-image').src = userAvatar; 
   
-  const tgId = window.Telegram.WebApp.initDataUnsafe.user.id;
+  const tgId = window.Telegram.WebApp.initDataUnsafe.user.id;*/
   
 
   fetch('https://f09f-89-22-177-227.ngrok-free.app/receive_tg_id', {
@@ -12,7 +12,7 @@
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ id: tgId })
+    body: JSON.stringify({ id: 138754835 })
   })
 
   .then(response => {
