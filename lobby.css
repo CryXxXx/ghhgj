@@ -1,0 +1,372 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.circle {
+    width: 34px; /* Диаметр круга */
+    height: 34px; /* Диаметр круга */
+    background-color: #1adb5c; /* Зеленый цвет фона */
+    border-radius: 50%; /* Скругление углов до круга */
+    position: absolute;
+    top: 20px; /* Отступ сверху на 20 пикселей */
+    border: 1px solid #1b1b1b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.circle.left {
+    left: 6%;
+}
+
+.circle.right {
+    right: 6%;
+}
+
+.inner-circle {
+    width: 30px; /* Диаметр внутреннего круга */
+    height: 30px; /* Диаметр внутреннего круга */
+    border-radius: 50%; /* Скругление углов до круга */
+    overflow: hidden; /* Обрезка содержимого до формы круга */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.inner-circle.left {
+    background-color: #fff;
+}
+
+.circle-image {
+    object-fit: cover; /* Масштабирование изображения для заполнения круга */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.circle-image.left {
+    width: 100%; /* Ширина изображения равна ширине внутреннего круга */
+    height: 100%; /* Высота изображения равна высоте внутреннего круга */
+}
+
+.circle-image.right {
+    width: 100%; /* Ширина изображения равна ширине внутреннего круга */
+    height: 100%; /* Высота изображения равна высоте внутреннего круга */
+}
+
+.byx {
+    font-family: 'Sora', sans-serif;
+    font-size: 20px;
+    font-weight: 700; /* Вес шрифта 300 */
+    color: #1b1b1b;
+    top: 25px;
+    position: absolute;
+    left: 50%; /* Сдвиг влево на 50% */
+    transform: translateX(-50%); /* Смещение контейнера на половину его ширины влево */
+}
+
+.black-rectangle {
+    width: calc(100% - 40px);
+    min-width: 270px;
+    aspect-ratio: 3 / 1;
+    background-color: #1b1b1b; /* Черный цвет фона */
+    position: absolute;
+    padding: 0px;
+    top: 70px; /* Отступ сверху */
+    border-radius: 19px; /* Скругление углов */
+    border: 2px solid #696969;
+    left: 50%; /* Сдвиг влево на 50% */
+    transform: translateX(-50%); /* Смещение контейнера на половину его ширины влево */
+}
+
+.balance {
+    font-family: 'Sora', sans-serif;
+    font-size: 10px;
+    font-weight: 400; /* Вес шрифта 300 */
+    color: #5f5f5f;
+    top: 12%;
+    right: 4%;
+    position: absolute;
+}
+
+.balance::before {
+    content: "Current balance: ";
+}
+
+.profit {
+    font-family: 'Sora', sans-serif;
+    font-size: 24px;
+    font-weight: 300; /* Вес шрифта 300 */
+    color: #fff;
+    top: 28%;
+    left: 5%;
+    position: absolute;
+}
+
+.profit::before {
+    content: "₽ ";
+    color: #a1a1a1;
+}
+
+.gray-text {
+    font-family: 'Sora', sans-serif;
+    font-size: 10px;
+    font-weight: 300; /* Вес шрифта 300 */
+    color: #a1a1a1;
+    bottom: 18%;
+    left: 5%;
+    position: absolute;
+}
+
+.m-rectangle {
+    width: 65px;
+    height: 25px; /* Высота прямоугольника */
+    background-color: #2e2e2e; /* Черный цвет фона */
+    position: absolute;
+    bottom: 27%; /* Отступ сверху */
+    right: 4%;
+    border-radius: 20px; /* Скругление углов */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.percent {
+    font-family: 'Sora', sans-serif;
+    font-size: 10px;
+    font-weight: 200; /* Вес шрифта 300 */
+    color: #1adb5c;
+    position: absolute;
+}
+.percent::before{
+    content: '▴ +';
+    font-size: 10px;
+    font-weight: 200; /* Вес шрифта 300 */
+}
+
+.percent::after{
+    content: '%';
+}
+
+.container {
+    width: auto;
+    height: auto; /* Высота прямоугольника */
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    gap: 2px;
+    top: 29%;
+    left: 50%; /* Сдвиг влево на 50% */
+    transform: translateX(-50%); /* Смещение контейнера на половину его ширины влево */
+}
+  
+.svg-item {
+    width: auto;
+    height: auto;
+    position: relative;
+}
+
+.tt {
+    flex-grow: 1;
+    width: 21vw; /* Ширина изображения равна ширине внутреннего круга */
+    height: 8vh; /* Высота изображения равна высоте внутреннего круга */
+}
+
+.last-percent {
+    font-family: 'Sora', sans-serif;
+    font-size: 10px;
+    font-weight: 400; /* Вес шрифта 300 */
+    color: #696969;
+    position: absolute;
+    top: 17%;
+    left: 15%;
+}
+
+.last-percent::after {
+    content: "%";
+}
+
+.last-percent::before {
+    content: "+";
+}
+
+.bigbox {
+    width: auto;
+    height: auto; /* Высота прямоугольника */
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    left: 50%; /* Сдвиг влево на 50% */
+    transform: translateX(-50%); /* Смещение контейнера на половину его ширины влево */
+    top: 38vh;
+}
+
+.k {
+    left: 50%; /* Сдвиг влево на 50% */
+    transform: translateX(-50%); /* Смещение контейнера на половину его ширины влево */
+    font-family: 'Sora', sans-serif;
+    font-size: 12px;
+    font-weight: 400; /* Вес шрифта 300 */
+    color: #1b1b1b;
+    position: absolute;
+    top: 30%;
+}
+
+.k::before {
+    content: "k=";
+}
+
+.t {
+    left: 50%; /* Сдвиг влево на 50% */
+    transform: translateX(-50%); /* Смещение контейнера на половину его ширины влево */
+    font-family: 'Sora', sans-serif;
+    font-size: 12px;
+    font-weight: 400; /* Вес шрифта 300 */
+    color: #2e2e2e;
+    position: absolute;
+    top: 40%;
+}
+
+.t::before {
+    content: "t=";
+}
+
+.buy-button {
+    width: 46%;
+    aspect-ratio: 73 / 18;
+    left: 50%; /* Сдвиг влево на 50% */
+    transform: translateX(-50%); /* Смещение контейнера на половину его ширины влево */
+    background-color: #1adb5c;
+    border: 2px solid #1b1b1b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100px;
+    top: 91%;
+    position: absolute;
+}
+
+.black-field {
+    width: calc(100% - 2px);
+    height: calc(100% - 2px);
+    background-color: #1b1b1b;
+    display: flex;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100px;
+}
+
+.buy {
+    font-family: 'Saira', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: #f5f5f5;
+}
+
+.bigbox {
+    flex-grow: 1;
+    width: calc(100% - 40px);
+    min-width: 270px;
+    height: auto;
+}
+
+.white-box {
+    width: 100%; /* Ширина изображения равна ширине внутреннего круга */
+    height: 100%; /* Высота изображения равна высоте внутреннего круга */
+}
+
+.bet-cont {
+    width: 25vw;
+    height: 6vh;
+    bottom: 0%;
+    left: 50%; /* Сдвиг влево на 50% */
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    gap: 70%;
+}
+
+.bet {
+    font-family: 'Sora', sans-serif;
+    font-size: 12px;
+    font-weight: 400; /* Вес шрифта 300 */
+    color: #1b1b1b;
+    position: absolute;
+}
+
+.strelka {
+    flex-grow: 1;
+    width: 35%; /* Ширина изображения равна ширине внутреннего круга */
+    height: 35%; /* Высота изображения равна высоте внутреннего круга */
+}
+
+@media (min-width: 370px) {
+    .last-percent {
+        font-size: 12px;
+    }
+
+    .m-rectangle {
+        width: 70px;
+        height: 30px; /* Высота прямоугольника */
+        bottom: 30%; /* Отступ сверху */
+    }
+
+    .percent {
+        font-size: 12px;/
+    }
+    .percent::before{
+        font-size: 12px;
+    }
+
+    .profit {
+        font-size: 30px;
+        top: 30%;
+    }
+
+    .gray-text {
+        font-size: 12px;
+        bottom: 15%;
+    }
+
+    .balance {
+        font-size: 11px;
+    }
+
+    .bet {
+        font-size: 14px;
+    }
+
+    .strelka {
+        flex-grow: 1;
+        width: 30%; /* Ширина изображения равна ширине внутреннего круга */
+        height: 30%; /* Высота изображения равна высоте внутреннего круга */
+    }
+}
+
+@media (min-width: 380px) {
+    .black-rectangle {
+        border-radius: 23px; /* Скругление углов */
+    }
+}
+
+@media (min-width: 420px) {
+    .buy {
+        font-size: 16px;
+    }
+}
+
+@media (min-width: 450px) {
+    .buy {
+        font-size: 20px;
+    }
+}
